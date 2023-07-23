@@ -1,13 +1,12 @@
 class Solution {
     public boolean isPalindrome(int x) {
-        String str = String.valueOf(x);
-        int start = 0, last = str.length() - 1;
+        if(x < 0 || (x != 0 && x % 10 == 0)) return false;
         
-        while(start <= last) {
-            if(str.charAt(start) != str.charAt(last)) return false;
-            start++;
-            last--;
+        int reverseValue = 0;
+        while(x > reverseValue) {
+            reverseValue = reverseValue * 10 + x % 10;
+            x /= 10;
         }
-        return true;
+        return (x == reverseValue || x == reverseValue/10);
     }
 }
